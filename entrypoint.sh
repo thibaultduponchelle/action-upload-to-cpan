@@ -15,4 +15,4 @@ if [ -z $PASSWORD ]; then
   exit 1
 fi
 
-cpan-upload --user $USERNAME --password $PASSWORD --dry-run *.tar.gz
+cpan-upload --user $USERNAME --password $PASSWORD *.tar.gz
