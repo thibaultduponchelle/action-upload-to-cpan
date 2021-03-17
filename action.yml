@@ -1,5 +1,5 @@
 # action.yml
-name: 'Upload to CPAN
+name: 'Upload to CPAN'
 description: 'Upload to CPAN'
 inputs:
   username:  # id of input
