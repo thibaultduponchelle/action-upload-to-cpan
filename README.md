@@ -1,4 +1,6 @@
 # Upload to CPAN github action
+**WARNING**: This github action is very young, use at your own risks :grinning:
+
 This action upload your distribution to CPAN
 
 It requires that you generated the dist to have a `My-Distribution-0.01.tar.gz` lying around :grinning:
