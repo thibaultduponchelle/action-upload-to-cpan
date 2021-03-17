@@ -1,0 +1,16 @@
+# action.yml
+name: 'Upload to CPAN
+description: 'Upload to CPAN'
+inputs:
+  username:  # id of input
+    description: 'The PAUSE username'
+    required: true
+  password:  # id of input
+    description: 'The PAUSE password'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
