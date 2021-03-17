@@ -19,3 +19,57 @@ with:
   username: ${{ secrets.USERNAME }}
   password: ${{ secrets.PASSWORD }}
 ```
+
+For an `ExtUtils::MakeMaker` module, you can then write a `.github/workflows/build-and-action.yml` like this:
+```yml
+on: [push]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    name: Build and release to CPAN
+    steps:
+    - uses: actions/checkout@v2
+    - name: Configure
+      run: perl Makefile.PL
+    - name: Build
+      run: make
+    - name: Deliver locally
+      run: make dist
+    - name: Upload to CPAN
+      id: upload
+      uses: thibaultduponchelle/upload-to-cpan@master
+      with:
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+```
+
+## Details
+This github actions is based on [cpan-upload](https://metacpan.org/pod/distribution/CPAN-Uploader/bin/cpan-upload) and will produce this kind of logs if the upload is a success:
+
+```
+registering upload with PAUSE web server
+POSTing upload for Acme-Automatix-0.02.tar.gz to https://pause.perl.org/pause/authenquery?ACTION=add_uri
+PAUSE add message sent ok [200]
+```
+
+## Troubleshooting
+### Unauthorized
+You will get this message if your user/password are not correct:
+```bash
+registering upload with PAUSE web server
+POSTing upload for Acme-Automatix-0.01.tar.gz to https://pause.perl.org/pause/authenquery?ACTION=add_uri
+Upload failed (request failed with error code 401
+  Message: Unauthorized
+), will make attempt #1 ...
+```
+
+### Conflict
+You will get this message if your distribution already exists with the same version:
+```bash
+registering upload with PAUSE web server
+POSTing upload for Acme-Automatix-0.01.tar.gz to https://pause.perl.org/pause/authenquery?ACTION=add_uri
+Upload failed (request failed with error code 409
+  Message: Conflict
+), will make attempt #1 ...
+```
