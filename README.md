@@ -1,7 +1,5 @@
 # Upload to CPAN github action
 
-![](cpan.svg)
-
 **WARNING**: This github action is very young, use at your own risks :grinning:
 
 This action upload your distribution to CPAN
