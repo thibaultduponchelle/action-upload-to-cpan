@@ -17,7 +17,7 @@ Set your credentials as github secrets and give them to `with`, they won't be pr
 
 ## Example usage
 ```yml
-uses: actions/upload-to-cpan@master
+uses: actions/action-upload-to-cpan@master
 with:
   username: ${{ secrets.USERNAME }}
   password: ${{ secrets.PASSWORD }}
