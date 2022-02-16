@@ -61,7 +61,7 @@ PAUSE add message sent ok [200]
 ## Troubleshooting
 ### Unauthorized
 You will get this message if your user/password are not correct:
-```bash
+```
 registering upload with PAUSE web server
 POSTing upload for Acme-Automatix-0.01.tar.gz to https://pause.perl.org/pause/authenquery?ACTION=add_uri
 Upload failed (request failed with error code 401
@@ -71,7 +71,7 @@ Upload failed (request failed with error code 401
 
 ### Conflict
 You will get this message if your distribution already exists with the same version:
-```bash
+```
 Failed to upload and reached maximum retry count!
 registering upload with PAUSE web server
 POSTing upload for Acme-Automatix-0.11.tar.gz to https://pause.perl.org/pause/authenquery?ACTION=add_uri
